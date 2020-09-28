@@ -1,5 +1,4 @@
 const express = require('express');
-const projectsModel = require('./projects-model');
 
 const Projects = require('./projects-model');
 
@@ -43,7 +42,7 @@ router.put('/:id', (req, res) => {
 	Projects.findById(id)
 		.then(project => {
 			if (project) {
-				projectsModel.update(changes, id).then(updatedProject => {
+				Projects.update(changes, id).then(updatedProject => {
 					res.status(202).json({ message: 'success in updating', updatedProject });
 				});
 			} else {
