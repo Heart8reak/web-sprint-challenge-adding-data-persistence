@@ -12,7 +12,7 @@ function findResources() {
 	return db('resources');
 }
 
-function findResourcesById(iid) {
+function findResourcesById(id) {
 	return db('resources')
 		.where({ id })
 		.first();

@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 	const newData = req.body;
 	Resources.addResources(newData)
 		.then(resource => {
-			res.status(201).json({ message: 'Success in creating a new resource', newData });
+			res.status(201).json({ message: 'Success in creating a new resource', resource });
 		})
 		.catch(err => {
 			res.status(500).json({ message: 'Failed to create', err });
@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
 	Resources.remove(id)
 		.then(deleted => {
 			if (deleted) {
-				res.status(200).json({ message: 'seccues in deleting' });
+				res.status(200).json({ message: 'Success in deleting' });
 			} else {
 				res.status(404).json({ message: 'could not be deleted' });
 			}
