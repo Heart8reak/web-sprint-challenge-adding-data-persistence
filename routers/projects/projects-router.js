@@ -22,13 +22,13 @@ router.get('/:id', (req, res) => {
 			res.status(200).json({ message: 'Success', project });
 		})
 		.catch(err => {
-			res.status(500).json({ message: 'Failed trya again' }, err);
+			res.status(500).json({ message: 'Failed try again', err });
 		});
 });
 
 router.post('/', (req, res) => {
 	const newProject = req.body;
-	Projects.addProject(projectData)
+	Projects.addProject(newProject)
 		.then(project => {
 			res.status(201).json({ message: 'Success created new project', project });
 		})
@@ -59,10 +59,10 @@ router.delete('/:id', (req, res) => {
 	const { id } = req.params;
 	Projects.remove(id)
 		.then(deleted => {
-			if (delted) {
+			if (deleted) {
 				res.status(200).json({ message: 'success in deleting' });
 			} else {
-				res.status(404).json({ message: 'Could not be delted' });
+				res.status(404).json({ message: 'Could not be deleted' });
 			}
 		})
 		.catch(err => {
